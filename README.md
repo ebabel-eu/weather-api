@@ -9,6 +9,13 @@ First run `npm start` and then send a GET to http://localhost:3000/ as a startin
 
 To query a specific country, send a GET to http://localhost:3000/:countryName where `:countryName` is the name of the country.
 
+## Unit tests
+```bash
+npm test
+```
+
+To run tests continuously, use `npm run test:watch` instead.
+
 ## Test manually in Terminal
 
 ### `GET`ting data from the API.

@@ -27,8 +27,7 @@ const handleError = (errorMessage) => {
 
 const roundTwoDecimals = (toRound) => Number(toRound.toFixed(2));
 
-const getAverageTemperature = (forecasts) => {
-  const temperatures = forecasts.map(forecast => forecast.temperature);
+const getAverageTemperature = (temperatures) => {
   const average = temperatures.reduce((a, b) => (a + b)) / temperatures.length;
   return roundTwoDecimals(average);
 };
@@ -99,7 +98,7 @@ app.get('/:countryName', (req, res) => {
     return;
   }
 
-  const temperatures = Object.values(mockData.data.forecast[countryName]).filter(value => value.temperature);
+  const temperatures = Object.values(mockData.data.forecast[countryName]).map(forecast => forecast.temperature);
   const averageTemperature = getAverageTemperature(temperatures);
 
   const result = {
@@ -129,3 +128,9 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Weather API listening on port ${PORT}`);
 });
+
+exports.getLink = getLink;
+exports.handleError = handleError;
+exports.roundTwoDecimals = roundTwoDecimals;
+exports.getAverageTemperature = getAverageTemperature;
+exports.capitalize = capitalize;
