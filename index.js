@@ -25,7 +25,7 @@ const handleError = (errorMessage) => {
   };
 };
 
-const roundTwoDecimals = (toRound) => Number(toRound.toFixed(2));
+const roundTwoDecimals = (toRound) => Number(parseFloat(toRound).toFixed(2)) * 100 / 100;
 
 const getAverageTemperature = (temperatures) => {
   const average = temperatures.reduce((a, b) => (a + b)) / temperatures.length;
